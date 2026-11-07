@@ -7,6 +7,7 @@ import algorithms.ca2.model.Employee;
 import algorithms.ca2.model.EmployeeFileReader;
 import java.util.ArrayList;
 import java.io.IOException;
+import algorithms.ca2.algorithms.EmployeeMergeSort;
 /**
  *
  * @author pc
@@ -25,6 +26,10 @@ System.out.println("File exists: "  + java.nio.file.Files.exists( java.nio.file.
 
     try {
         ArrayList<Employee> employees = reader.readEmployees("data/Applicants_Form.txt");
+        
+        EmployeeMergeSort sorter = new EmployeeMergeSort();
+
+        ArrayList<Employee> sortedEmployees = sorter.mergeSort(employees);
 
         System.out.println("===== EMPLOYEE FILE TEST =====");
 
@@ -35,6 +40,11 @@ System.out.println("File exists: "  + java.nio.file.Files.exists( java.nio.file.
         for (Employee employee : employees) {
             System.out.println(employee);
         }
+        System.out.println("\n===== EMPLOYEES SORTED ALPHABETICALLY =====");
+
+        for (Employee employee : sortedEmployees) {
+        System.out.println(employee);
+}
 
     } catch (IOException e) {
         System.out.println("Error reading employee file: "  + e.getMessage());
