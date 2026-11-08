@@ -8,6 +8,7 @@ import algorithms.ca2.model.EmployeeFileReader;
 import java.util.ArrayList;
 import java.io.IOException;
 import algorithms.ca2.algorithms.EmployeeMergeSort;
+import algorithms.ca2.algorithms.EmployeeRecursiveSearch;
 /**
  *
  * @author pc
@@ -22,7 +23,7 @@ public class AlgorithmsCA2 {
         EmployeeFileReader reader = new EmployeeFileReader();
         System.out.println("Working directory: "  + System.getProperty("user.dir"));
 
-System.out.println("File exists: "  + java.nio.file.Files.exists( java.nio.file.Paths.get("data/Applicants_Form.txt")));
+    System.out.println("File exists: "  + java.nio.file.Files.exists( java.nio.file.Paths.get("data/Applicants_Form.txt")));
 
     try {
         ArrayList<Employee> employees = reader.readEmployees("data/Applicants_Form.txt");
@@ -30,6 +31,13 @@ System.out.println("File exists: "  + java.nio.file.Files.exists( java.nio.file.
         EmployeeMergeSort sorter = new EmployeeMergeSort();
 
         ArrayList<Employee> sortedEmployees = sorter.mergeSort(employees);
+        EmployeeRecursiveSearch searcher = new EmployeeRecursiveSearch();
+        Employee found = searcher.search(sortedEmployees, "Ethan Clark", 0, sortedEmployees.size() - 1);
+        if (found != null) {
+        System.out.println("\nEmployee found: " + found);
+        } else {
+        System.out.println("\nEmployee not found.");
+        }
 
         System.out.println("===== EMPLOYEE FILE TEST =====");
 
