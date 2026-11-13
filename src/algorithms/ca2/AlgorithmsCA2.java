@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.io.IOException;
 import algorithms.ca2.algorithms.EmployeeMergeSort;
 import algorithms.ca2.algorithms.EmployeeRecursiveSearch;
+import algorithms.ca2.algorithms.EmployeeBinarySearchTree;
 /**
  *
  * @author pc
@@ -26,7 +27,13 @@ public class AlgorithmsCA2 {
     System.out.println("File exists: "  + java.nio.file.Files.exists( java.nio.file.Paths.get("data/Applicants_Form.txt")));
 
     try {
+        
         ArrayList<Employee> employees = reader.readEmployees("data/Applicants_Form.txt");
+        EmployeeBinarySearchTree tree = new EmployeeBinarySearchTree();
+
+        for (Employee employee : employees) {
+        tree.insert(employee);
+        }
         
         EmployeeMergeSort sorter = new EmployeeMergeSort();
 
@@ -52,11 +59,13 @@ public class AlgorithmsCA2 {
 
         for (Employee employee : sortedEmployees) {
         System.out.println(employee);
-}
+        }
+        System.out.println("\n===== EMPLOYEE BINARY TREE (LEVEL ORDER) =====");
+        tree.displayLevelOrder();
 
     } catch (IOException e) {
         System.out.println("Error reading employee file: "  + e.getMessage());
-    }
+       }
     }
     
 }

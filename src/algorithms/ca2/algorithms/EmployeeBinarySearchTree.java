@@ -87,4 +87,36 @@ public class EmployeeBinarySearchTree {
         }
     }
 
+    // Calculate the height of the tree
+    public int getHeight() {
+        return calculateHeight(root);
+    }
+
+    private int calculateHeight(Node current) {
+
+        if (current == null) {
+            return 0;
+        }
+
+        int leftHeight = calculateHeight(current.left);
+        int rightHeight = calculateHeight(current.right);
+
+        return 1 + Math.max(leftHeight, rightHeight);
+    }
+    
+    // Count the total number of nodes
+    public int countNodes() {
+        return countNodesRecursive(root);
+    }
+
+    private int countNodesRecursive(Node current) {
+
+        if (current == null) {
+            return 0;
+        }
+
+        return 1 + countNodesRecursive(current.left) + countNodesRecursive(current.right);
+    }
+
+
 }
