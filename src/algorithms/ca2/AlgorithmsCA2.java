@@ -38,7 +38,9 @@ public class AlgorithmsCA2 {
         EmployeeMergeSort sorter = new EmployeeMergeSort();
 
         ArrayList<Employee> sortedEmployees = sorter.mergeSort(employees);
+        
         EmployeeRecursiveSearch searcher = new EmployeeRecursiveSearch();
+        
         Employee found = searcher.search(sortedEmployees, "Ethan Clark", 0, sortedEmployees.size() - 1);
         if (found != null) {
         System.out.println("\nEmployee found: " + found);
@@ -55,13 +57,19 @@ public class AlgorithmsCA2 {
         for (Employee employee : employees) {
             System.out.println(employee);
         }
+        
         System.out.println("\n===== EMPLOYEES SORTED ALPHABETICALLY =====");
 
         for (Employee employee : sortedEmployees) {
         System.out.println(employee);
         }
         System.out.println("\n===== EMPLOYEE BINARY TREE (LEVEL ORDER) =====");
+        
         tree.displayLevelOrder();
+        
+        System.out.println("\nTree height: " + tree.getHeight());
+        
+        System.out.println("Total number of nodes: " + tree.countNodes());
 
     } catch (IOException e) {
         System.out.println("Error reading employee file: "  + e.getMessage());
